@@ -3,6 +3,40 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var Tienda;
+(function (Tienda) {
+    var Ropa = (function () {
+        function Ropa(titulo) {
+            this.titulo = titulo;
+            alert(titulo);
+        }
+        return Ropa;
+    }());
+    Tienda.Ropa = Ropa;
+    var Informatica = (function () {
+        function Informatica(titulo) {
+            this.titulo = titulo;
+            alert("Tienda de tecnologia: " + titulo);
+        }
+        return Informatica;
+    }());
+    Tienda.Informatica = Informatica;
+})(Tienda || (Tienda = {}));
+var Informatica = Tienda.Informatica;
+var cargar_informatica = new Informatica('supertienda');
+function arranque(lanzar) {
+    return function (target) {
+        target.prototype.lanzamiento = function () {
+            alert(lanzar);
+        };
+    };
+}
 var Programa = (function () {
     function Programa() {
     }
@@ -20,6 +54,11 @@ var Programa = (function () {
     };
     return Programa;
 }());
+Programa = __decorate([
+    arranque('Lanzamiento del curso de NodeJS y Angular 2')
+], Programa);
+var programa = new Programa();
+programa.lanzamiento();
 var EditorVideo = (function (_super) {
     __extends(EditorVideo, _super);
     function EditorVideo() {
@@ -57,3 +96,17 @@ function guardar() {
     listado.innerHTML = list;
     document.getElementById("nombre").value = "";
 }
+setInterval(function (nombre_variable, hola) {
+    console.log("hola");
+}, 1000);
+var frutas = [
+    'Manzana',
+    'Naranja',
+    'Platano',
+    'Pera'
+];
+//var recorrer = frutas.map(fruta=>{
+var recorrer = frutas.map(function (fruta) {
+    console.log(fruta);
+    console.log(fruta.length);
+});

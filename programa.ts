@@ -1,3 +1,28 @@
+module Tienda {
+    export class Ropa {
+        constructor (public titulo:string){
+            alert(titulo);
+        }
+    }
+    export class Informatica {
+        constructor (public titulo:string){
+            alert("Tienda de tecnologia: "+titulo);
+        }
+    }
+}
+
+import Informatica = Tienda.Informatica;
+var cargar_informatica = new Informatica('supertienda');
+
+function arranque(lanzar:string){
+    return function(target:Function){
+        target.prototype.lanzamiento=function():void{
+            alert(lanzar);
+        }
+    }
+}
+
+@arranque('Lanzamiento del curso de NodeJS y Angular 2')
 class Programa{
     public nombre:string;
     public version:number;
@@ -18,6 +43,9 @@ class Programa{
         this.version=version;
     }
 }
+
+var programa= new Programa();
+programa.lanzamiento();
 
 class EditorVideo extends Programa{
     public timeline:number;
@@ -65,3 +93,20 @@ function guardar(){
 
     (<HTMLInputElement>document.getElementById("nombre")).value="";
 }
+
+setInterval((nombre_variable,hola)=>{
+        console.log("hola");
+    },1000);
+
+var frutas = [
+    'Manzana',
+    'Naranja',
+    'Platano',
+    'Pera'
+];
+
+//var recorrer = frutas.map(fruta=>{
+var recorrer = frutas.map(function(fruta){
+    console.log(fruta);
+    console.log(fruta.length);
+});
